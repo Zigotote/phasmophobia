@@ -1,12 +1,14 @@
 <template>
-  <b-row class="b-row">
-    <b-col class="b-col">Test</b-col>
-    <b-col class="b-col">Test</b-col>
-  </b-row>
+  <choose-ghost />
 </template>
 
 <script>
+import ChooseGhost from "./views/ChooseGhost.vue";
+
 export default {
   name: "App",
+  components: {
+    ChooseGhost,
+  },
 };
 </script>
