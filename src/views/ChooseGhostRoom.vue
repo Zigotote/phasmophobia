@@ -6,14 +6,18 @@
 </template>
 
 <script>
+import { useRouter } from "vue-router";
 import RoomsList from "../components/RoomsList.vue";
 
 export default {
   name: "ChooseGhostRoom",
   components: { RoomsList },
   setup() {
+    const router = useRouter();
     const sendRoom = (room) => {
       console.log(room);
+      localStorage.setItem("GHOST_ROOM", room);
+      router.push({ name: "ChooseSafeRoom" });
     };
     return { sendRoom };
   },

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ChooseGhost from "../views/ChooseGhost.vue";
 import ChooseGhostRoom from "../views/ChooseGhostRoom.vue";
+import ChooseSafeRoom from "../views/ChooseSafeRoom.vue";
 
 const routes = [
   {
@@ -9,9 +10,14 @@ const routes = [
     component: ChooseGhost,
   },
   {
-    path: "/",
+    path: "/ghost-room",
     name: "ChooseGhostRoom",
     component: ChooseGhostRoom,
+  },
+  {
+    path: "/safe-room",
+    name: "ChooseSafeRoom",
+    component: ChooseSafeRoom,
   },
 ];
 

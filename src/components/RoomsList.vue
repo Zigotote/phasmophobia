@@ -6,6 +6,7 @@
       class="btn btn-danger m-4"
       v-for="room in floor.rooms"
       :key="floor + room"
+      :disabled="room == disabledRoom"
       @click="$emit('sendRoom', room)"
     >
       {{ room }}
@@ -16,6 +17,7 @@
 <script>
 export default {
   name: "RoomsList",
+  props: { disabledRoom: String },
   emits: ["sendRoom"],
   setup() {
     const floors = [
