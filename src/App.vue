@@ -1,14 +1,9 @@
 <template>
-  <choose-ghost />
+  <router-view />
 </template>
 
 <script>
-import ChooseGhost from "./views/ChooseGhost.vue";
-
 export default {
   name: "App",
-  components: {
-    ChooseGhost,
-  },
 };
 </script>
