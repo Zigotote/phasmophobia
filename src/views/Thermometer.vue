@@ -1,15 +1,15 @@
 <template>
-  <h1 class="text-center">{{ temperature }}°C</h1>
+  <h1 class="text-center">{{ state.temperature }}°C</h1>
 </template>
 
 <script>
-import { ref } from "vue";
+import { reactive } from "vue";
 
 export default {
   name: "Thermometer",
   setup() {
-    const temperature = ref(15);
-    return { temperature };
+    const state = reactive({ temperature: 15 });
+    return { state };
   },
 };
 </script>

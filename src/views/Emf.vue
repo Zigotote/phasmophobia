@@ -1,15 +1,15 @@
 <template>
-  <h1 class="text-center">{{ emf }}</h1>
+  <h1 class="text-center">{{ state.emf }}</h1>
 </template>
 
 <script>
-import { ref } from "vue";
+import { reactive } from "vue";
 
 export default {
   name: "Thermometer",
   setup() {
-    const emf = ref(2);
-    return { emf };
+    const state = reactive({ emf: 2 });
+    return { state };
   },
 };
 </script>

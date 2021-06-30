@@ -3,20 +3,20 @@
     <img
       class="text-center m-5"
       alt="Ecriture fantomatique"
-      :src="`${publicPath}assets/ghost_writing/${image}.PNG`"
+      :src="`${publicPath}assets/ghost_writing/${state.image}.PNG`"
     />
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { reactive } from "vue";
 
 export default {
   name: "Book",
   setup() {
     const publicPath = process.env.BASE_URL;
-    const image = ref(1);
-    return { publicPath, image };
+    const state = reactive({ image: 1 });
+    return { publicPath, state };
   },
 };
 </script>

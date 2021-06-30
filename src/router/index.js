@@ -12,6 +12,7 @@ import SafeRoom from "../views/SafeRoom.vue";
 import Book from "../views/Book.vue";
 import Thermometer from "../views/Thermometer.vue";
 import Emf from "../views/Emf.vue";
+import HunterLocalization from "../views/HunterLocalization.vue";
 
 const routes = [
   {
@@ -76,8 +77,13 @@ const routes = [
   },
   {
     path: "/emf",
-    name: "emf",
+    name: "Emf",
     component: Emf,
+  },
+  {
+    path: "/gps",
+    name: "HunterLocalization",
+    component: HunterLocalization,
   },
 ];
 

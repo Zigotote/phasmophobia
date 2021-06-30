@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h1 class="text-center mb-5">Bienvenue sur Phasmophobia IRL</h1>
+    <h5 class="text-center mb-5">Quel appareil souhaitez-vous lancer ?</h5>
     <div class="row">
       <router-link
         class="col"
@@ -44,6 +45,10 @@ export default {
       {
         to: "/emf",
         name: "EMF",
+      },
+      {
+        to: "/gps",
+        name: "GPS des chasseurs",
       },
     ];
     return { links };
