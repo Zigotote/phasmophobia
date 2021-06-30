@@ -1,11 +1,11 @@
 <template>
   <div class="row" v-for="(item, index) in state.items" :key="index">
     <img
-      class="col-5"
+      class="col-4"
       :src="`${publicPath}assets/${item.image}`"
       :alt="item.alt"
     />
-    <h5 class="col-6 mt-5">{{ item.value }}</h5>
+    <h5 class="col-6 mt-4">{{ item.value }}</h5>
   </div>
 </template>
 

@@ -9,16 +9,20 @@
         <group-data />
       </div>
     </div>
+    <div class="row border border-dark border-2 rounded mt-4">
+      <ghost-communications />
+    </div>
   </div>
 </template>
 
 <script>
 import GhostActions from "../components/GhostActions.vue";
 import GroupData from "../components/GroupData.vue";
+import GhostCommunications from "../components/GhostCommunications.vue";
 
 export default {
   name: "GhostHome",
-  components: { GhostActions, GroupData },
+  components: { GhostActions, GroupData, GhostCommunications },
 };
 </script>
 

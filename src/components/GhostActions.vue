@@ -1,14 +1,14 @@
 <template>
   <div class="row m-1">
     <img
-      class="col-3 rounded-pill"
+      class="col-2 rounded-pill"
       :class="!state.power ? 'border border-danger border-3' : ''"
       alt="Lumière éteinte"
       :src="`${publicPath}assets/power_off.svg`"
     />
     <div class="form-check form-switch col-3">
       <input
-        class="form-check-input mx-auto mt-5"
+        class="form-check-input mx-auto mt-4"
         type="checkbox"
         id="switch"
         :disabled="!state.huntingAvailable"
@@ -16,14 +16,14 @@
       />
     </div>
     <img
-      class="col-3 rounded-pill"
+      class="col-2 rounded-pill"
       :class="state.power ? 'border border-danger border-3' : ''"
       :src="`${publicPath}assets/power_on.svg`"
       alt="Lumière allumée"
     />
   </div>
   <div class="row m-1">
-    <div class="row">
+    <div class="row mt-3 mb-0">
       <h5 class="text-center mb-5">Variation de l'EMF</h5>
     </div>
     <div class="row">
