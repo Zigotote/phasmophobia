@@ -23,7 +23,6 @@ export default {
     })
 
     const sendRoom = (room) => {
-      console.log(room);
       socket.emit("GHOST_ZONE_CHOSEN", room);
     };
     return { sendRoom };

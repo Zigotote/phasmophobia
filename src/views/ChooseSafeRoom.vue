@@ -17,8 +17,7 @@ export default {
     const socket = SocketConfig.SOCKET;
     const router = useRouter();
     const ghostRoom = localStorage.getItem("GHOST_ROOM");
-    socket.on("SAFE_ZONE_CHOSEN", room => {
-      console.log(room);
+    socket.on("SAFE_ZONE_CHOSEN", () => {
       router.push({ name: "GhostHome" });
     });
     const sendRoom = (room) => {

@@ -66,7 +66,6 @@ export default {
     const state = reactive({ power: false, huntingAvailable: true });
     const togglePower = () => {
       state.power = !state.power;
-      console.log(state.power);
       socket.emit(state.power ? "POWER_ON" : "POWER_OFF");
     };
     const emfs = ["Rare", "Occasionnel", "Souvent"];

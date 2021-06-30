@@ -36,8 +36,7 @@ export default {
       "Yokai",
       "Hantu",
     ];
-    socket.on('GHOST_CHOSEN', ghost => {
-      console.log(ghost);
+    socket.on('GHOST_CHOSEN', () => {
       router.push({ name: "ChooseGhostRoom" });
     })
 

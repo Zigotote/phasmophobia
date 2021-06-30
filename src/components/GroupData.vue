@@ -61,7 +61,6 @@ export default {
     });
 
     socket.on('EMF_UPD', emf => {
-      console.log('emf_upd');
       state.emf = emf;
     });
 

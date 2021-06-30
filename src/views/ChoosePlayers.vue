@@ -44,8 +44,7 @@ export default {
       { name: "", color: "brown" },
       { name: "", color: "" },
     ];
-    socket.on("PLAYERS_CREATED", (players) => {
-      console.log(players);
+    socket.on("PLAYERS_CREATED", () => {
       router.push({ name: "ChooseSafeRoom" });
     });
 
