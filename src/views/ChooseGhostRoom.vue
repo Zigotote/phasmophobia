@@ -16,13 +16,15 @@ export default {
   setup() {
     const socket = SocketConfig.SOCKET;
     const router = useRouter();
+
+    socket.on("GHOST_ZONE_CHOSEN", room => {
+      localStorage.setItem("GHOST_ROOM", room);
+      router.push({ name: "ChoosePlayers" });
+    })
+
     const sendRoom = (room) => {
       console.log(room);
       socket.emit("GHOST_ZONE_CHOSEN", room);
-      socket.on("GHOST_ZONE_CHOSEN", room => {
-        localStorage.setItem("GHOST_ROOM", room);
-        router.push({ name: "ChoosePlayers" });
-      })
     };
     return { sendRoom };
   },

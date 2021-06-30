@@ -44,16 +44,17 @@ export default {
       { name: "", color: "brown" },
       { name: "", color: "" },
     ];
+    socket.on("PLAYERS_CREATED", (players) => {
+      console.log(players);
+      router.push({ name: "ChooseSafeRoom" });
+    });
+
     const sendPlayers = () => {
       const playerNames = players
         .map((player) => player.name.trim())
         .filter((playerName) => playerName.length > 0);
       localStorage.setItem("PLAYERS_COLORS", JSON.stringify(players));
       socket.emit("PLAYERS_CREATED", playerNames);
-      socket.on("PLAYERS_CREATED", (players) => {
-        console.log(players);
-        router.push({ name: "ChooseSafeRoom" });
-      });
     };
     return { publicPath, players, sendPlayers };
   },

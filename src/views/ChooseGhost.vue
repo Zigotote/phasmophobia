@@ -36,14 +36,15 @@ export default {
       "Yokai",
       "Hantu",
     ];
+    socket.on('GHOST_CHOSEN', ghost => {
+      console.log(ghost);
+      router.push({ name: "ChooseGhostRoom" });
+    })
+
     ghosts.sort();
     const sendGhost = (ghostButton) => {
       const ghostName = ghostButton.target.innerHTML;
       socket.emit('GHOST_CHOSEN', ghostName);
-      socket.on('GHOST_CHOSEN', ghost => {
-        console.log(ghost);
-        router.push({ name: "ChooseGhostRoom" });
-      })
     };
     return { ghosts, sendGhost };
   },

@@ -17,12 +17,12 @@ export default {
     const socket = SocketConfig.SOCKET;
     const router = useRouter();
     const ghostRoom = localStorage.getItem("GHOST_ROOM");
+    socket.on("SAFE_ZONE_CHOSEN", room => {
+      console.log(room);
+      router.push({ name: "GhostHome" });
+    });
     const sendRoom = (room) => {
       socket.emit("SAFE_ZONE_CHOSEN", room);
-      socket.on("SAFE_ZONE_CHOSEN", room => {
-        console.log(room);
-        router.push({ name: "GhostHome" });
-      })
     };
     return { ghostRoom, sendRoom };
   },
