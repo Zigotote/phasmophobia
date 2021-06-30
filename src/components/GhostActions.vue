@@ -55,15 +55,18 @@
 
 <script>
 import { reactive } from "vue";
+import SocketConfig from "../socket.config";
 
 export default {
   name: "GhostActions",
   setup() {
+    const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
     const state = reactive({ power: false, huntingAvailable: true });
     const togglePower = () => {
       state.power = !state.power;
       console.log(state.power);
+      socket.emit(state.power ? 'POWER_ON' : 'POWER_OFF');
     };
     const emfs = ["Rare", "Occasionnel", "Souvent"];
     const changeEmf = (value) => {
