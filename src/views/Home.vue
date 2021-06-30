@@ -41,6 +41,10 @@ export default {
         to: "/thermometer",
         name: "Thermomètre",
       },
+      {
+        to: "/emf",
+        name: "EMF",
+      },
     ];
     return { links };
   },

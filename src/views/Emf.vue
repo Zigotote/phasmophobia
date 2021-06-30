@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-center">{{ temperature }}°C</h1>
+  <h1 class="text-center">{{ emf }}</h1>
 </template>
 
 <script>
@@ -8,15 +8,15 @@ import { ref } from "vue";
 export default {
   name: "Thermometer",
   setup() {
-    const temperature = ref(15);
-    return { temperature };
+    const emf = ref(2);
+    return { emf };
   },
 };
 </script>
 
 <style scoped>
 h1 {
-  background-color: #e8eb06;
+  background-color: grey;
   font-size: 10rem;
 }
 </style>
