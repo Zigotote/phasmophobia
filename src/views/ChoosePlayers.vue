@@ -42,7 +42,7 @@ export default {
       { name: "", color: "red" },
       { name: "", color: "blue" },
       { name: "", color: "brown" },
-      { name: "", color: "" },
+      { name: "", color: "purple" },
     ];
     socket.on("PLAYERS_CREATED", (players) => {
       console.log(players);

@@ -29,6 +29,10 @@ export default {
         to: "/ghost",
         name: "Vue fantôme",
       },
+      {
+        to: "/safe-room",
+        name: "PC Safe room",
+      },
     ];
     return { links };
   },
