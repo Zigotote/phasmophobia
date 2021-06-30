@@ -24,14 +24,18 @@
 </template>
 
 <script>
+import { useRouter } from "vue-router";
+
 export default {
   name: "GhostInteraction",
   setup() {
     const publicPath = process.env.BASE_URL;
+    const router = useRouter();
     //TODO To plug with API
     const players = JSON.parse(localStorage.getItem("PLAYERS_COLORS"));
     const selectPlayer = (player) => {
       console.log(player);
+      router.push({ name: "GhostHome" });
     };
     return { publicPath, players, selectPlayer };
   },
