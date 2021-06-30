@@ -17,7 +17,7 @@ export default {
     const sendRoom = (room) => {
       console.log(room);
       localStorage.setItem("GHOST_ROOM", room);
-      router.push({ name: "ChooseSafeRoom" });
+      router.push({ name: "ChoosePlayers" });
     };
     return { sendRoom };
   },
