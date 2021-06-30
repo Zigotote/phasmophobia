@@ -5,7 +5,7 @@
       <div class="col" v-for="(player, index) in players" :key="index">
         <img
           alt="Icon joueur"
-          :id="player.color"
+          :id="`${player.color}-svg`"
           :src="`${publicPath}assets/person.svg`"
         />
         <div class="form-floating mb-3">
@@ -45,33 +45,17 @@ export default {
       { name: "", color: "" },
     ];
     const sendPlayers = () => {
-      const playerNames = players.map((player) => player.name.trim()).filter(playerName => playerName.length > 0);
-      socket.emit('PLAYERS_CREATED', playerNames);
-      socket.on('PLAYERS_CREATED', players => {
+      const playerNames = players
+        .map((player) => player.name.trim())
+        .filter((playerName) => playerName.length > 0);
+      localStorage.setItem("PLAYERS_COLORS", JSON.stringify(players));
+      socket.emit("PLAYERS_CREATED", playerNames);
+      socket.on("PLAYERS_CREATED", (players) => {
         console.log(players);
         router.push({ name: "ChooseSafeRoom" });
-      })
+      });
     };
     return { publicPath, players, sendPlayers };
   },
 };
 </script>
-
-<style scoped>
-#green {
-  filter: invert(48%) sepia(22%) saturate(2476%) hue-rotate(86deg)
-    brightness(118%) contrast(119%);
-}
-#red {
-  filter: invert(8%) sepia(0%) saturate(2476%) hue-rotate(86deg)
-    brightness(118%) contrast(119%);
-}
-#blue {
-  filter: invert(100%) sepia(35%) saturate(2476%) hue-rotate(86deg)
-    brightness(118%) contrast(119%);
-}
-#brown {
-  filter: invert(0%) sepia(50%) saturate(2476%) hue-rotate(86deg)
-    brightness(80%) contrast(50%);
-}
-</style>

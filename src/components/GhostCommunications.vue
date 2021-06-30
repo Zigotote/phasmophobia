@@ -37,7 +37,7 @@ export default {
       {
         image: "eye.svg",
         alt: "Interactions",
-        link: "/",
+        link: "/ghost-interaction",
       },
       {
         image: "skull.svg",

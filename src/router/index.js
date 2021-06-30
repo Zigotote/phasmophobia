@@ -6,6 +6,7 @@ import ChoosePlayers from "../views/ChoosePlayers.vue";
 import ChooseSafeRoom from "../views/ChooseSafeRoom.vue";
 import GhostHome from "../views/GhostHome.vue";
 import GhostBook from "../views/GhostBook.vue";
+import GhostInteraction from "../views/GhostInteraction.vue";
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: "/book",
     name: "GhostBook",
     component: GhostBook,
+  },
+  {
+    path: "/ghost-interaction",
+    name: "GhostInteraction",
+    component: GhostInteraction,
   },
 ];
 
