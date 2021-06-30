@@ -70,7 +70,7 @@ export default {
     };
     const emfs = ["Rare", "Occasionnel", "Souvent"];
     const changeEmf = (value) => {
-      console.log(value);
+      socket.emit('EMF_FREQUENCY_UPD', value);
     };
     const startHunt = () => {
       console.log("Start hunt");
