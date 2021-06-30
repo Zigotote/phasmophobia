@@ -34,9 +34,10 @@
           name="emf"
           :checked="index == 1"
           :disabled="!state.huntingAvailable"
+          :id="emf"
           @click="() => changeEmf(index)"
         />
-        <label class="form-check-label" for="emf">
+        <label class="form-check-label" :for="emf">
           {{ emf }}
         </label>
       </div>
@@ -66,14 +67,14 @@ export default {
     const togglePower = () => {
       state.power = !state.power;
       console.log(state.power);
-      socket.emit(state.power ? 'POWER_ON' : 'POWER_OFF');
+      socket.emit(state.power ? "POWER_ON" : "POWER_OFF");
     };
     const emfs = ["Rare", "Occasionnel", "Souvent"];
     const changeEmf = (value) => {
-      socket.emit('EMF_FREQUENCY_UPD', value);
+      socket.emit("EMF_FREQUENCY_UPD", value);
     };
     const startHunt = () => {
-      socket.emit('HUNTING_STARTED');
+      socket.emit("HUNTING_STARTED");
       state.huntingAvailable = false;
       setTimeout(() => {
         state.huntingAvailable = true;
