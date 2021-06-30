@@ -17,9 +17,21 @@
 </template>
 
 <script>
+import SocketConfig from "../socket.config";
+
 export default {
   name: "Home",
   setup() {
+    const socket = SocketConfig.SOCKET;
+
+    socket.on('PLAYERS_CREATED', players => {
+      localStorage.setItem('PLAYERS', JSON.stringify(players));
+    });
+
+    socket.on('PLAYERS_MENTAL_UPD', players => {
+      localStorage.setItem('PLAYERS', JSON.stringify(players));
+    });
+
     const links = [
       {
         to: "/choose-ghost",
