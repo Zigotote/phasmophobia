@@ -32,7 +32,7 @@ export default {
       {
         image: "book.svg",
         alt: "Livre d'écriture",
-        link: "/book",
+        link: "/ghost-book",
       },
       {
         image: "eye.svg",

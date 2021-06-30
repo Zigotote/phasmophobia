@@ -33,6 +33,10 @@ export default {
         to: "/safe-room",
         name: "PC Safe room",
       },
+      {
+        to: "/book",
+        name: "Livre d'écriture",
+      },
     ];
     return { links };
   },

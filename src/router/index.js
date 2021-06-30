@@ -9,6 +9,7 @@ import GhostBook from "../views/GhostBook.vue";
 import GhostInteraction from "../views/GhostInteraction.vue";
 import Deads from "../views/Deads.vue";
 import SafeRoom from "../views/SafeRoom.vue";
+import Book from "../views/Book.vue";
 
 const routes = [
   {
@@ -42,7 +43,7 @@ const routes = [
     component: GhostHome,
   },
   {
-    path: "/book",
+    path: "/ghost-book",
     name: "GhostBook",
     component: GhostBook,
   },
@@ -60,6 +61,11 @@ const routes = [
     path: "/safe-room",
     name: "SafeRoom",
     component: SafeRoom,
+  },
+  {
+    path: "/book",
+    name: "Book",
+    component: Book,
   },
 ];
 
