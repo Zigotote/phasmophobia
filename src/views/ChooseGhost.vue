@@ -13,12 +13,12 @@
 
 <script>
 import { useRouter } from "vue-router";
-import io                  from 'socket.io-client';
+import SocketConfig from "../socket.config";
 
 export default {
   name: "ChooseGhost",
   setup() {
-    const socket =      io('http://localhost:3000/');
+    const socket = SocketConfig.SOCKET;
     const router = useRouter();
     const ghosts = [
       "Esprit",
