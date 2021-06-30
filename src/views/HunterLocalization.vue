@@ -15,11 +15,11 @@ export default {
   components: { RoomsList },
   setup() {
     const socket = SocketConfig.SOCKET;
-    let state = reactive({ currentRoom: "" });
+    let state = reactive({ currentRoom: localStorage.getItem("CURRENT_ROOM") });
     const sendRoom = (room) => {
       socket.emit("PLAYERS_MOVE", room);
       state.currentRoom = room;
-      console.log(state.currentRoom);
+      localStorage.setItem("CURRENT_ROOM", room);
     };
     return { state, sendRoom };
   },
