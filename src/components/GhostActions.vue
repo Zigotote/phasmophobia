@@ -73,7 +73,7 @@ export default {
       socket.emit('EMF_FREQUENCY_UPD', value);
     };
     const startHunt = () => {
-      console.log("Start hunt");
+      socket.emit('HUNTING_STARTED');
       state.huntingAvailable = false;
       setTimeout(() => {
         state.huntingAvailable = true;
