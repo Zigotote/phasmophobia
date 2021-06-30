@@ -42,7 +42,7 @@ export default {
       {
         image: "skull.svg",
         alt: "Morts",
-        link: "/",
+        link: "/deads",
       },
     ];
     return { publicPath, items };
