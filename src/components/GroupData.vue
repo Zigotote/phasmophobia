@@ -20,7 +20,7 @@ export default {
     const publicPath = process.env.BASE_URL;
     const state = reactive({
       temperature: 2.5,
-      emf: "Occasionnel",
+      emf: "",
       psychology: 100,
       room: "Salon",
       items: computed(() => [
@@ -49,7 +49,7 @@ export default {
     });
     socket.on('TEMP_UPD', temp => {
       state.temperature = temp;
-    })
+    });
 
     socket.on('PLAYERS_MENTAL_UPD', players => {
       let average = 0;
@@ -58,7 +58,12 @@ export default {
       }
       average /= (1.0 *players.length);
       state.psychology = average;
-    })
+    });
+
+    socket.on('EMF_UPD', emf => {
+      console.log('emf_upd');
+      state.emf = emf;
+    });
 
     return { publicPath, state };
   },
