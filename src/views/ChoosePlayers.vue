@@ -51,9 +51,10 @@ export default {
 
     const sendPlayers = () => {
       const playerNames = players
-        .map((player) => player.name.trim())
+        .map((player) => {
+          return { name: player.name.trim(), color: player.color };
+        })
         .filter((playerName) => playerName.length > 0);
-      localStorage.setItem("PLAYERS_COLORS", JSON.stringify(players));
       socket.emit("PLAYERS_CREATED", playerNames);
     };
     return { publicPath, players, sendPlayers };
