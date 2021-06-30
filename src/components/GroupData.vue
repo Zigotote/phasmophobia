@@ -51,6 +51,15 @@ export default {
       state.temperature = temp;
     })
 
+    socket.on('PLAYERS_MENTAL_UPD', players => {
+      let average = 0;
+      for(const player of players) {
+        average += player.mentalScore;
+      }
+      average /= (1.0 *players.length);
+      state.psychology = average;
+    })
+
     return { publicPath, state };
   },
 };
