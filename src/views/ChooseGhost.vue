@@ -13,10 +13,12 @@
 
 <script>
 import { useRouter } from "vue-router";
+import io                  from 'socket.io-client';
 
 export default {
   name: "ChooseGhost",
   setup() {
+    const socket =      io('http://localhost:3000/');
     const router = useRouter();
     const ghosts = [
       "Esprit",
@@ -35,9 +37,13 @@ export default {
       "Hantu",
     ];
     ghosts.sort();
-    const sendGhost = (ghost) => {
-      console.log(ghost.target.innerHTML);
-      router.push({ name: "ChooseGhostRoom" });
+    const sendGhost = (ghostButton) => {
+      const ghostName = ghostButton.target.innerHTML;
+      socket.emit('GHOST_CHOSEN', ghostName);
+      socket.on('GHOST_CHOSEN', ghost => {
+        console.log(ghost);
+        router.push({ name: "ChooseGhostRoom" });
+      })
     };
     return { ghosts, sendGhost };
   },
