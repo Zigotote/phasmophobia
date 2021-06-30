@@ -49,6 +49,14 @@ export default {
         to: "/book",
         name: "Livre d'écriture",
       },
+      {
+        to: "/thermometer",
+        name: "Thermomètre",
+      },
+      {
+        to: "/emf",
+        name: "EMF",
+      },
     ];
     return { links };
   },

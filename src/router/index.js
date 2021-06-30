@@ -10,6 +10,8 @@ import GhostInteraction from "../views/GhostInteraction.vue";
 import Deads from "../views/Deads.vue";
 import SafeRoom from "../views/SafeRoom.vue";
 import Book from "../views/Book.vue";
+import Thermometer from "../views/Thermometer.vue";
+import Emf from "../views/Emf.vue";
 
 const routes = [
   {
@@ -66,6 +68,16 @@ const routes = [
     path: "/book",
     name: "Book",
     component: Book,
+  },
+  {
+    path: "/thermometer",
+    name: "Thermometer",
+    component: Thermometer,
+  },
+  {
+    path: "/emf",
+    name: "emf",
+    component: Emf,
   },
 ];
 
