@@ -54,7 +54,7 @@ export default {
         .map((player) => {
           return { name: player.name.trim(), color: player.color };
         })
-        .filter((playerName) => playerName.length > 0);
+        .filter((player) => player.name.length > 0);
       socket.emit("PLAYERS_CREATED", playerNames);
     };
     return { publicPath, players, sendPlayers };
