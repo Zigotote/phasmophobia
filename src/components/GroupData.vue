@@ -11,15 +11,17 @@
 
 <script>
 import { reactive, computed } from "vue";
+import SocketConfig from "../socket.config";
 
 export default {
   name: "GroupData",
   setup() {
+    const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
     const state = reactive({
-      temperature: 15,
-      emf: "Rare",
-      psychology: 87,
+      temperature: 2.5,
+      emf: "",
+      psychology: 100,
       room: "Salon",
       items: computed(() => [
         {
@@ -45,6 +47,23 @@ export default {
         },
       ]),
     });
+    socket.on('TEMP_UPD', temp => {
+      state.temperature = temp;
+    });
+
+    socket.on('PLAYERS_MENTAL_UPD', players => {
+      let average = 0;
+      for(const player of players) {
+        average += player.mentalScore;
+      }
+      average /= (1.0 *players.length);
+      state.psychology = average;
+    });
+
+    socket.on('EMF_UPD', emf => {
+      state.emf = emf;
+    });
+
     return { publicPath, state };
   },
 };
