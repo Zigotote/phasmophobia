@@ -19,19 +19,19 @@
 </template>
 
 <script>
-import SocketConfig from "../socket.config";
 import { useRouter } from "vue-router";
 
 export default {
   name: "PlayersList",
   props: { socketEvent: String },
   setup() {
-    const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
     const router = useRouter();
-    const players = JSON.parse(localStorage.getItem("PLAYERS"));
+    //TODO To plug with API
+    const players = JSON.parse(localStorage.getItem("PLAYERS_COLORS"));
     const selectPlayer = (player) => {
-      socket.emit('PLAYER_DEATH', player);
+      console.log(player);
+      //TODO call socket event
       router.push({ name: "GhostHome" });
     };
     return { publicPath, players, selectPlayer };
