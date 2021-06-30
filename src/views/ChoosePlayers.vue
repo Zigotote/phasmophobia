@@ -29,10 +29,12 @@
 
 <script>
 import { useRouter } from "vue-router";
+import SocketConfig from "../socket.config";
 
 export default {
   name: "ChoosePlayers",
   setup() {
+    const socket = SocketConfig.SOCKET;
     const router = useRouter();
     const publicPath = process.env.BASE_URL;
     const players = [
@@ -43,8 +45,12 @@ export default {
       { name: "", color: "" },
     ];
     const sendPlayers = () => {
-      console.log(players.map((player) => player.name.trim()));
-      router.push({ name: "ChooseSafeRoom" });
+      const playerNames = players.map((player) => player.name.trim()).filter(playerName => playerName.length > 0);
+      socket.emit('PLAYERS_CREATED', playerNames);
+      socket.on('PLAYERS_CREATED', players => {
+        console.log(players);
+        router.push({ name: "ChooseSafeRoom" });
+      })
     };
     return { publicPath, players, sendPlayers };
   },

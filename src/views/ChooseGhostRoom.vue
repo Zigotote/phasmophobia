@@ -8,16 +8,21 @@
 <script>
 import { useRouter } from "vue-router";
 import RoomsList from "../components/RoomsList.vue";
+import SocketConfig from "../socket.config";
 
 export default {
   name: "ChooseGhostRoom",
   components: { RoomsList },
   setup() {
+    const socket = SocketConfig.SOCKET;
     const router = useRouter();
     const sendRoom = (room) => {
       console.log(room);
-      localStorage.setItem("GHOST_ROOM", room);
-      router.push({ name: "ChoosePlayers" });
+      socket.emit("GHOST_ZONE_CHOSEN", room);
+      socket.on("GHOST_ZONE_CHOSEN", room => {
+        localStorage.setItem("GHOST_ROOM", room);
+        router.push({ name: "ChoosePlayers" });
+      })
     };
     return { sendRoom };
   },
