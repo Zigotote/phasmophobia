@@ -2,7 +2,9 @@
   <div class="container">
     <h1 class="text-center mb-5">Vue du fantôme</h1>
     <div class="row">
-      <ghost-actions />
+      <div class="col-9 border border-dark border-2 rounded">
+        <ghost-actions />
+      </div>
       <div class="col-3"></div>
     </div>
   </div>
