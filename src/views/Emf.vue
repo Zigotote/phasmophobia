@@ -4,11 +4,16 @@
 
 <script>
 import { reactive } from "vue";
+import SocketConfig from "../socket.config";
 
 export default {
-  name: "Thermometer",
+  name: "Emf",
   setup() {
-    const state = reactive({ emf: 2 });
+    const socket = SocketConfig.SOCKET;
+    const state = reactive({ emf: "" });
+    socket.on('EMF_UPD', emf => {
+      state.emf = emf;
+    });
     return { state };
   },
 };
