@@ -22,7 +22,7 @@ export default {
       temperature: 2.5,
       emf: "",
       psychology: 100,
-      room: "",
+      room: localStorage.getItem("CURRENT_ROOM"),
       items: computed(() => [
         {
           image: "thermostat.svg",
@@ -47,25 +47,25 @@ export default {
         },
       ]),
     });
-    socket.on('TEMP_UPD', temp => {
+    socket.on("TEMP_UPD", (temp) => {
       state.temperature = temp;
     });
 
-    socket.on('PLAYERS_MENTAL_UPD', players => {
-      players = players.filter(p => !p.isDead);
+    socket.on("PLAYERS_MENTAL_UPD", (players) => {
+      players = players.filter((p) => !p.isDead);
       let average = 0;
-      for(const player of players) {
+      for (const player of players) {
         average += player.mentalScore;
       }
-      average /= (1.0 *players.length);
+      average /= 1.0 * players.length;
       state.psychology = average;
     });
 
-    socket.on('PLAYERS_MOVE', room => {
+    socket.on("PLAYERS_MOVE", (room) => {
       state.room = room;
     });
 
-    socket.on('EMF_UPD', emf => {
+    socket.on("EMF_UPD", (emf) => {
       state.emf = emf;
     });
 

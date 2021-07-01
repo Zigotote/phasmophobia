@@ -24,12 +24,16 @@ export default {
   setup() {
     const socket = SocketConfig.SOCKET;
 
-    socket.on('PLAYERS_CREATED', players => {
-      localStorage.setItem('PLAYERS', JSON.stringify(players));
+    socket.on("PLAYERS_CREATED", (players) => {
+      localStorage.setItem("PLAYERS", JSON.stringify(players));
     });
 
-    socket.on('PLAYERS_MENTAL_UPD', players => {
-      localStorage.setItem('PLAYERS', JSON.stringify(players));
+    socket.on("PLAYERS_CREATED", (players) => {
+      localStorage.setItem("PLAYERS", JSON.stringify(players));
+    });
+
+    socket.on("PLAYERS_MOVE", (room) => {
+      localStorage.setItem("CURRENT_ROOM", room);
     });
 
     const links = [
