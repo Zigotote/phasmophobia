@@ -10,12 +10,17 @@
 
 <script>
 import { reactive } from "vue";
+import SocketConfig from "../socket.config";
 
 export default {
   name: "Book",
   setup() {
+    const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
     const state = reactive({ image: 1 });
+    socket.on('BOOK_UPD', index => {
+      state.image = index;
+    });
     return { publicPath, state };
   },
 };
