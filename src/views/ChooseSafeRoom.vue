@@ -6,19 +6,18 @@
 </template>
 
 <script>
-import { useRouter } from "vue-router";
 import RoomsList from "../components/RoomsList.vue";
 import SocketConfig from "../socket.config";
 
 export default {
   name: "ChooseSafeRoom",
   components: { RoomsList },
-  setup() {
+  emits: ['setPage'],
+  setup(_, context) {
     const socket = SocketConfig.SOCKET;
-    const router = useRouter();
     const ghostRoom = localStorage.getItem("GHOST_ROOM");
     socket.on("SAFE_ZONE_CHOSEN", () => {
-      router.push({ name: "GhostHome" });
+      context.emit('setPage', 'ghost-home');
     });
     const sendRoom = (room) => {
       socket.emit("SAFE_ZONE_CHOSEN", room);

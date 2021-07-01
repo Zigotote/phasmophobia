@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/ghost">Retour à la vue fantôme</router-link>
+  <button @click="$emit('setPage', 'ghost-home')">Retour</button>
   <h1 class="text-center mb-5">Livre d'écriture fantomatique</h1>
   <h5 class="text-center mb-5">Que souhaitez-vous écrire dans le livre ?</h5>
   <div class="row m-1">
@@ -23,6 +23,7 @@ import SocketConfig from "../socket.config";
 
 export default {
   name: "GhostBook",
+  emits: ['setPage'],
   setup() {
     const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;

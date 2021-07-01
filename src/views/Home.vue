@@ -26,10 +26,6 @@ export default {
         name: "Démarrer une partie",
       },
       {
-        to: "/ghost",
-        name: "Vue fantôme",
-      },
-      {
         to: "/safe-room",
         name: "PC Safe room",
       },
