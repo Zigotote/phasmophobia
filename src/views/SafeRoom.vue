@@ -46,28 +46,7 @@ export default {
   setup() {
     const publicPath = process.env.BASE_URL;
     const state = reactive({
-      players: [
-        {
-          name: "Toto",
-          mentalScore: 50,
-          color: "green",
-        },
-        {
-          name: "Tita",
-          mentalScore: 530,
-          color: "red",
-        },
-        {
-          name: "Tutu",
-          mentalScore: 5,
-          color: "purple",
-        },
-        {
-          name: "OJfd",
-          mentalScore: 10,
-          color: "brown",
-        },
-      ],
+      players: JSON.parse(localStorage.getItem('PLAYERS')).filter(p => !p.isDead),
       healthAvg: computed(() => {
         let average = 0;
         for (const player of state.players) {
@@ -77,6 +56,7 @@ export default {
         return average;
       }),
     });
+
     const takePill = (player) => {
       console.log(player);
     };

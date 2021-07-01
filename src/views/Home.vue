@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h1 class="text-center mb-5">Bienvenue sur Phasmophobia IRL</h1>
-    <h5 class="text-center mb-5">Quel appareil souhaitez-vous lancer ?</h5>
     <div class="row">
       <router-link
         class="col"
@@ -18,9 +17,21 @@
 </template>
 
 <script>
+import SocketConfig from "../socket.config";
+
 export default {
   name: "Home",
   setup() {
+    const socket = SocketConfig.SOCKET;
+
+    socket.on('PLAYERS_CREATED', players => {
+      localStorage.setItem('PLAYERS', JSON.stringify(players));
+    });
+
+    socket.on('PLAYERS_MENTAL_UPD', players => {
+      localStorage.setItem('PLAYERS', JSON.stringify(players));
+    });
+
     const links = [
       {
         to: "/choose-ghost",
@@ -45,10 +56,6 @@ export default {
       {
         to: "/emf",
         name: "EMF",
-      },
-      {
-        to: "/gps",
-        name: "GPS des chasseurs",
       },
     ];
     return { links };

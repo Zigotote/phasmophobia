@@ -3,7 +3,7 @@
   <div class="container">
     <h1 class="text-center mb-5">Interaction fantomatique</h1>
     <h5 class="text-center mb-5">Qui a interagi avec vous ?</h5>
-    <players-list />
+    <players-list socket-event="GHOST_INTERACT"/>
   </div>
 </template>
 

@@ -52,6 +52,7 @@ export default {
     });
 
     socket.on('PLAYERS_MENTAL_UPD', players => {
+      players = players.filter(p => !p.isDead);
       let average = 0;
       for(const player of players) {
         average += player.mentalScore;

@@ -3,7 +3,7 @@
   <div class="container">
     <h1 class="text-center mb-5">Décès soudain</h1>
     <h5 class="text-center mb-5">Qui est mort ?</h5>
-    <players-list />
+    <players-list socket-event="PLAYER_DEATH"/>
   </div>
 </template>
 
