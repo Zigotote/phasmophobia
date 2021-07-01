@@ -19,14 +19,16 @@
 
 <script>
 import { useRouter } from "vue-router";
+import SocketConfig from "../socket.config";
 
 export default {
   name: "GhostBook",
   setup() {
+    const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
     const router = useRouter();
     const sendWriting = (index) => {
-      console.log(index);
+      socket.emit('BOOK_UPD', index);
       router.push({ name: "GhostHome" });
     };
     return { publicPath, sendWriting };
