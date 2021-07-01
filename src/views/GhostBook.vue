@@ -1,5 +1,5 @@
 <template>
-  <button @click="$emit('setPage', 'ghost-home')">Retour</button>
+  <button class="btn btn-outline-dark" @click="$emit('setPage', 'ghost-home')">Retour</button>
   <h1 class="text-center mb-5">Livre d'écriture fantomatique</h1>
   <h5 class="text-center mb-5">Que souhaitez-vous écrire dans le livre ?</h5>
   <div class="row m-1">
@@ -18,19 +18,17 @@
 </template>
 
 <script>
-import { useRouter } from "vue-router";
 import SocketConfig from "../socket.config";
 
 export default {
   name: "GhostBook",
   emits: ['setPage'],
-  setup() {
+  setup(_, context) {
     const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
-    const router = useRouter();
     const sendWriting = (index) => {
       socket.emit('BOOK_UPD', index);
-      router.push({ name: "GhostHome" });
+      context.emit('setPage', 'ghost-home');
     };
     return { publicPath, sendWriting };
   },

@@ -1,5 +1,5 @@
 <template>
-  <button @click="$emit('setPage', '')">Retour</button>
+  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">Retour</button>
   <div class="container">
     <h1 class="text-center mb-5">Sélectionnez votre fantôme</h1>
     <div class="row">

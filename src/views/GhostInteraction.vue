@@ -1,5 +1,5 @@
 <template>
-  <button @click="$emit('setPage', 'ghost-home')">Retour</button>
+  <button class="btn btn-outline-dark" @click="$emit('setPage', 'ghost-home')">Retour</button>
   <div class="container">
     <h1 class="text-center mb-5">Interaction fantomatique</h1>
     <h5 class="text-center mb-5">Qui a interagi avec vous ?</h5>

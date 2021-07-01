@@ -1,4 +1,5 @@
 <template>
+  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">Retour</button>
   <h1 class="text-center">{{ state.temperature }}°C</h1>
 </template>
 
@@ -8,6 +9,7 @@ import SocketConfig from "../socket.config";
 
 export default {
   name: "Thermometer",
+  emits: ['setPage'],
   setup() {
     const socket = SocketConfig.SOCKET;
     const state = reactive({ temperature: 15 });

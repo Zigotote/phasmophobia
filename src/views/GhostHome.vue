@@ -1,4 +1,5 @@
 <template>
+  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">Retour</button>
   <div class="container">
     <h1 class="text-center mb-5">Vue du fantôme</h1>
     <div class="row">
@@ -10,7 +11,7 @@
       </div>
     </div>
     <div class="row border border-dark border-2 rounded mt-4">
-      <ghost-communications />
+      <ghost-communications @setPage="p => $emit('setPage', p)"/>
     </div>
   </div>
 </template>
@@ -22,6 +23,7 @@ import GhostCommunications from "../components/GhostCommunications.vue";
 
 export default {
   name: "GhostHome",
+  emits: ['setPage'],
   components: { GhostActions, GroupData, GhostCommunications },
 };
 </script>

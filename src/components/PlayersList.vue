@@ -19,20 +19,19 @@
 </template>
 
 <script>
-import { useRouter } from "vue-router";
 import SocketConfig from "../socket.config";
 
 export default {
   name: "PlayersList",
   props: { socketEvent: String },
-  setup(props) {
+  emits: ['setPage'],
+  setup(props, context) {
     const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
-    const router = useRouter();
     const players = JSON.parse(localStorage.getItem('PLAYERS')).filter(p => !p.isDead);
     const selectPlayer = (player) => {
       socket.emit(props.socketEvent, player);
-      router.push({ name: "GhostHome" });
+      context.emit('setPage','gost-home');
     };
     return { publicPath, players, selectPlayer };
   },

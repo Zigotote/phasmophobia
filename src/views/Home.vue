@@ -26,20 +26,24 @@ export default {
         name: "Démarrer une partie",
       },
       {
-        to: "/safe-room",
+        to: "safe-room",
         name: "PC Safe room",
       },
       {
-        to: "/book",
+        to: "book",
         name: "Livre d'écriture",
       },
       {
-        to: "/thermometer",
+        to: "thermometer",
         name: "Thermomètre",
       },
       {
-        to: "/emf",
+        to: "emf",
         name: "EMF",
+      },
+      {
+        to: "gps",
+        name: "GPS de l'équipe",
       },
     ];
     return { links };

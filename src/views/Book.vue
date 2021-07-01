@@ -1,4 +1,5 @@
 <template>
+  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">Retour</button>
   <div class="container">
     <img
       class="text-center m-5"
@@ -14,6 +15,7 @@ import SocketConfig from "../socket.config";
 
 export default {
   name: "Book",
+  emits: ['setPage'],
   setup() {
     const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;

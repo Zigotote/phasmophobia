@@ -1,9 +1,9 @@
 <template>
-  <router-link
+  <div
     class="col"
     v-for="(item, index) in items"
     :key="index"
-    :to="item.link"
+    @click="$emit('setPage', item.link)"
   >
     <div class="row">
       <div class="col" />
@@ -15,12 +15,13 @@
         {{ item.alt }}
       </p>
     </div>
-  </router-link>
+  </div>
 </template>
 
 <script>
 export default {
   name: "GhostCommunications",
+  emits: ['setPage'],
   setup() {
     const publicPath = process.env.BASE_URL;
     const items = [
@@ -32,17 +33,17 @@ export default {
       {
         image: "book.svg",
         alt: "Livre d'écriture",
-        link: "/ghost-book",
+        link: "ghost-book",
       },
       {
         image: "eye.svg",
         alt: "Interactions",
-        link: "/ghost-interaction",
+        link: "ghost-interaction",
       },
       {
         image: "skull.svg",
         alt: "Morts",
-        link: "/deads",
+        link: "deads",
       },
     ];
     return { publicPath, items };

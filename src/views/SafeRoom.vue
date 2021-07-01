@@ -1,4 +1,5 @@
 <template>
+  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">Retour</button>
   <div class="container">
     <h1 class="text-center mb-5">Santé mentale de l'équipe</h1>
     <div class="row">
@@ -44,6 +45,7 @@ import SocketConfig from "../socket.config";
 
 export default {
   name: "SafeRoom",
+  emits: ['setPage'],
   setup() {
     const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
