@@ -40,10 +40,12 @@
 
 <script>
 import { reactive, computed } from "vue";
+import SocketConfig from "../socket.config";
 
 export default {
   name: "SafeRoom",
   setup() {
+    const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
     const state = reactive({
       players: JSON.parse(localStorage.getItem('PLAYERS')).filter(p => !p.isDead),
@@ -56,9 +58,14 @@ export default {
         return average;
       }),
     });
-
+    socket.on('PLAYERS_CREATED', players => {
+      state.players = players.filter(p => !p.isDead)
+    })
+    socket.on('PLAYERS_MENTAL_UPD', players => {
+      state.players = players.filter(p => !p.isDead)
+    })
     const takePill = (player) => {
-      console.log(player);
+      socket.emit('TAKE_MEDICINE', player.name)
     };
     return { publicPath, state, takePill };
   },
