@@ -2,9 +2,11 @@
   <home v-if="state.page === undefined || state.page === null || state.page === ''" @setPage="setPage"/>
   <choose-ghost v-if="state.page === 'choose-ghost'" @setPage="setPage"/>
   <choose-ghost-room v-if="state.page === 'choose-ghost-room'" @setPage="setPage"/>
+  <choose-players v-if="state.page === 'choose-players'" @setPage="setPage"/>
 </template>
 
 <script>
+import ChoosePlayers   from './views/ChoosePlayers';
 import ChooseGhostRoom from './views/ChooseGhostRoom';
 import ChooseGhost     from './views/ChooseGhost';
 import { reactive }    from 'vue';
@@ -12,7 +14,7 @@ import Home            from './views/Home';
 import SocketConfig    from "./socket.config";
 
 export default {
-  name: "App", components: { ChooseGhostRoom, ChooseGhost, Home }, setup() {
+  name: "App", components: { ChoosePlayers, ChooseGhostRoom, ChooseGhost, Home }, setup() {
     let state = reactive({ page: localStorage.getItem("PAGE") });
 
     const socket = SocketConfig.SOCKET;
