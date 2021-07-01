@@ -22,7 +22,7 @@ export default {
       temperature: 2.5,
       emf: "",
       psychology: 100,
-      room: "Salon",
+      room: "",
       items: computed(() => [
         {
           image: "thermostat.svg",
@@ -59,6 +59,10 @@ export default {
       }
       average /= (1.0 *players.length);
       state.psychology = average;
+    });
+
+    socket.on('PLAYERS_MOVE', room => {
+      state.room = room;
     });
 
     socket.on('EMF_UPD', emf => {
