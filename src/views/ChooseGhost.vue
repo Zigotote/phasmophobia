@@ -13,15 +13,13 @@
 </template>
 
 <script>
-import { useRouter } from "vue-router";
 import SocketConfig from "../socket.config";
 
 export default {
   name: "ChooseGhost",
   emits: ['setPage'],
-  setup() {
+  setup(_, context) {
     const socket = SocketConfig.SOCKET;
-    const router = useRouter();
     const ghosts = [
       "Esprit",
       "Spectre",
@@ -39,7 +37,7 @@ export default {
       "Hantu",
     ];
     socket.on('GHOST_CHOSEN', () => {
-      router.push({ name: "ChooseGhostRoom" });
+      context.emit('setPage', 'choose-ghost-room');
     })
 
     ghosts.sort();
