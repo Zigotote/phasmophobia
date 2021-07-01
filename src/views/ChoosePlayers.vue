@@ -28,14 +28,13 @@
 </template>
 
 <script>
-import { useRouter } from "vue-router";
 import SocketConfig from "../socket.config";
 
 export default {
   name: "ChoosePlayers",
-  setup() {
+  emits: ['setPage'],
+  setup(_, context) {
     const socket = SocketConfig.SOCKET;
-    const router = useRouter();
     const publicPath = process.env.BASE_URL;
     const players = [
       { name: "", color: "green" },
@@ -45,7 +44,7 @@ export default {
       { name: "", color: "purple" },
     ];
     socket.on("PLAYERS_CREATED", () => {
-      router.push({ name: "ChooseSafeRoom" });
+      context.emit('setPage', 'choose-safe-room');
     });
 
     const sendPlayers = () => {

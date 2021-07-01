@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import ChooseSafeRoom from "../views/ChooseSafeRoom.vue";
 import GhostHome from "../views/GhostHome.vue";
 import GhostBook from "../views/GhostBook.vue";
 import GhostInteraction from "../views/GhostInteraction.vue";
@@ -16,11 +15,6 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-  },
-  {
-    path: "/choose-safe-room",
-    name: "ChooseSafeRoom",
-    component: ChooseSafeRoom,
   },
   {
     path: "/ghost",
