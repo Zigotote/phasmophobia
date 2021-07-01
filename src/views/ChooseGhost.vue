@@ -1,4 +1,5 @@
 <template>
+  <button @click="$emit('setPage', '')">Retour</button>
   <div class="container">
     <h1 class="text-center mb-5">Sélectionnez votre fantôme</h1>
     <div class="row">
@@ -17,6 +18,7 @@ import SocketConfig from "../socket.config";
 
 export default {
   name: "ChooseGhost",
+  emits: ['setPage'],
   setup() {
     const socket = SocketConfig.SOCKET;
     const router = useRouter();

@@ -2,43 +2,27 @@
   <div class="container">
     <h1 class="text-center mb-5">Bienvenue sur Phasmophobia IRL</h1>
     <div class="row">
-      <router-link
+      <div
         class="col"
         v-for="link in links"
         :key="link.to"
-        :to="link.to"
       >
-        <button type="button" class="btn btn-danger m-4">
+        <button type="button" @click="$emit('setPage', link.to)" class="btn btn-danger m-4">
           {{ link.name }}
         </button>
-      </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import SocketConfig from "../socket.config";
-
 export default {
   name: "Home",
+  emits: ['setPage'],
   setup() {
-    const socket = SocketConfig.SOCKET;
-
-    socket.on("PLAYERS_CREATED", (players) => {
-      localStorage.setItem("PLAYERS", JSON.stringify(players));
-    });
-
-    socket.on("PLAYERS_CREATED", (players) => {
-      localStorage.setItem("PLAYERS", JSON.stringify(players));
-    });
-
-    socket.on("PLAYERS_MOVE", (room) => {
-      localStorage.setItem("CURRENT_ROOM", room);
-    });
-
     const links = [
       {
-        to: "/choose-ghost",
+        to: "choose-ghost",
         name: "Démarrer une partie",
       },
       {
