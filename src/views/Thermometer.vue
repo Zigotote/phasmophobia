@@ -4,11 +4,16 @@
 
 <script>
 import { reactive } from "vue";
+import SocketConfig from "../socket.config";
 
 export default {
   name: "Thermometer",
   setup() {
+    const socket = SocketConfig.SOCKET;
     const state = reactive({ temperature: 15 });
+    socket.on('TEMP_UPD', temp => {
+      state.temperature = temp;
+    });
     return { state };
   },
 };
