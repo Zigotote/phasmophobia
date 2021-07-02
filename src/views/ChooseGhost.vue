@@ -1,5 +1,7 @@
 <template>
-  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">Retour</button>
+  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">
+    Retour
+  </button>
   <div class="container">
     <h1 class="text-center mb-5">Sélectionnez votre fantôme</h1>
     <div class="row">
@@ -17,7 +19,7 @@ import SocketConfig from "../socket.config";
 
 export default {
   name: "ChooseGhost",
-  emits: ['setPage'],
+  emits: ["setPage"],
   setup(_, context) {
     const socket = SocketConfig.SOCKET;
     const ghosts = [
@@ -36,14 +38,15 @@ export default {
       "Yokai",
       "Hantu",
     ];
-    socket.on('GHOST_CHOSEN', () => {
-      context.emit('setPage', 'choose-ghost-room');
-    })
+    socket.on("GHOST_CHOSEN", () => {
+      context.emit("setPage", "choose-ghost-room");
+      localStorage.setItem("PARTY_START", false);
+    });
 
     ghosts.sort();
     const sendGhost = (ghostButton) => {
       const ghostName = ghostButton.target.innerHTML;
-      socket.emit('GHOST_CHOSEN', ghostName);
+      socket.emit("GHOST_CHOSEN", ghostName);
     };
     return { ghosts, sendGhost };
   },
