@@ -81,7 +81,7 @@ export default {
       state.huntingAvailable = false;
       setTimeout(() => {
         state.huntingAvailable = true;
-      }, 20000);
+      }, 60000);
     };
     return { publicPath, state, togglePower, changeEmf, emfs, startHunt };
   },
