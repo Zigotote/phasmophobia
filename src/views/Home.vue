@@ -50,6 +50,10 @@ export default {
         name: "EMF",
       },
       {
+        to: "ouija-text",
+        name: "Ouija",
+      },
+      {
         to: "gps",
         name: "GPS de l'équipe",
       },

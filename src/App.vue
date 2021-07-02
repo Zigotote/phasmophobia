@@ -32,6 +32,7 @@
   <safe-room v-if="state.page === 'safe-room'" @setPage="setPage" />
   <book v-if="state.page === 'book'" @setPage="setPage" />
   <emf v-if="state.page === 'emf'" @setPage="setPage" />
+  <ouija-text v-if="state.page === 'ouija-text'" @setPage="setPage" />
 </template>
 
 <script>
@@ -44,6 +45,7 @@ import GhostBook from "./views/GhostBook";
 import Deads from "./views/Deads";
 import OuijaInteraction from "./views/OuijaInteraction";
 import OuijaInput from "./views/OuijaInput";
+import OuijaText from "./views/OuijaText";
 import GhostInteraction from "./views/GhostInteraction";
 import GhostHome from "./views/GhostHome";
 import ChoosePlayers from "./views/ChoosePlayers";
@@ -66,6 +68,7 @@ export default {
     Deads,
     OuijaInteraction,
     OuijaInput,
+    OuijaText,
     GhostInteraction,
     GhostHome,
     ChoosePlayers,
