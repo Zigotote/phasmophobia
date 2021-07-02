@@ -32,19 +32,19 @@ import SocketConfig from "../socket.config";
 
 export default {
   name: "ChoosePlayers",
-  emits: ['setPage'],
+  emits: ["setPage"],
   setup(_, context) {
     const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
     const players = [
-      { name: "", color: "green" },
       { name: "", color: "red" },
-      { name: "", color: "blue" },
-      { name: "", color: "brown" },
       { name: "", color: "purple" },
+      { name: "", color: "brown" },
+      { name: "", color: "green" },
+      { name: "", color: "blue" },
     ];
     socket.on("PLAYERS_CREATED", () => {
-      context.emit('setPage', 'choose-safe-room');
+      context.emit("setPage", "choose-safe-room");
     });
 
     const sendPlayers = () => {
