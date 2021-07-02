@@ -1,4 +1,7 @@
 <template>
+  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">
+    Retour
+  </button>
   <div class="container">
     <h1 class="text-center mb-5">Qui sont les chasseurs de fantôme ?</h1>
     <div class="row">
