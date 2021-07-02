@@ -29,7 +29,7 @@ export default {
       {
         image: "ouija.png",
         alt: "Ouija",
-        link: "/",
+        link: "ouija",
       },
       {
         image: "eye.svg",
