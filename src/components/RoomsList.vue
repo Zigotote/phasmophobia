@@ -24,23 +24,29 @@ export default {
       {
         name: "Rez-de-chaussée",
         rooms: [
-          "Salon",
+          "Salon - salle à manger",
           "Bureau",
           "Cuisine",
           "Arrière-cuisine",
+          "Toilettes",
           "Salle de bain",
         ],
       },
       {
         name: "1er étage",
         rooms: [
-          "Pallier",
+          "Palier",
           "Chambre orange",
           "Chambre bleue",
           "Chambre blanche",
+          "Dressing",
           "Salle de jeux",
-          "Salle de bain",
+          "Salle de bain ",
         ],
+      },
+      {
+        name: "2ème étage",
+        rooms: ["Palier ", "Chambre"],
       },
     ];
     return { floors };
