@@ -11,6 +11,7 @@
         class="form-check-input mx-auto mt-4"
         type="checkbox"
         id="switch"
+        v-model="state.power"
         :disabled="!state.huntingAvailable"
         @change="togglePower"
       />
@@ -63,9 +64,12 @@ export default {
   setup() {
     const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
-    const state = reactive({ power: false, huntingAvailable: true });
+    const state = reactive({
+      power: localStorage.getItem("POWER"),
+      huntingAvailable: true,
+    });
     const togglePower = () => {
-      state.power = !state.power;
+      localStorage.setItem("POWER", state.power);
       socket.emit(state.power ? "POWER_ON" : "POWER_OFF");
     };
     const emfs = ["Rare", "Occasionnel", "Souvent"];
