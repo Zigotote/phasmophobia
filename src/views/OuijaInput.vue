@@ -24,7 +24,7 @@ export default {
     const text = ref("");
     const sendOuija = () => {
       socket.emit("OUIJA_UPD", text.value);
-      context.emit("setPage", "gost-home");
+      context.emit("setPage", "ghost-home");
     };
     return { text, sendOuija };
   },

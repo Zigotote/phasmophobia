@@ -31,7 +31,7 @@ export default {
     const players = JSON.parse(localStorage.getItem('PLAYERS')).filter(p => !p.isDead);
     const selectPlayer = (player) => {
       socket.emit(props.socketEvent, player);
-      context.emit('setPage','gost-home');
+      context.emit('setPage','ghost-home');
     };
     return { publicPath, players, selectPlayer };
   },
