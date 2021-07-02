@@ -38,9 +38,10 @@ export default {
       "Yokai",
       "Hantu",
     ];
-    socket.on("GHOST_CHOSEN", () => {
+    socket.on("GHOST_CHOSEN", (ghost) => {
       context.emit("setPage", "choose-ghost-room");
       localStorage.setItem("PARTY_START", false);
+      localStorage.setItem("GHOST_CAN_WRITE", ghost.canWrite);
     });
 
     ghosts.sort();

@@ -1,6 +1,6 @@
 <template>
-  <div
-    class="col"
+  <button
+    class="col btn"
     v-for="(item, index) in items"
     :key="index"
     @click="$emit('setPage', item.link)"
@@ -15,25 +15,21 @@
         {{ item.alt }}
       </p>
     </div>
-  </div>
+  </button>
 </template>
 
 <script>
 export default {
   name: "GhostCommunications",
-  emits: ['setPage'],
+  emits: ["setPage"],
   setup() {
     const publicPath = process.env.BASE_URL;
+    const canWrite = localStorage.getItem("GHOST_CAN_WRITE");
     const items = [
       {
         image: "ouija.png",
         alt: "Ouija",
         link: "/",
-      },
-      {
-        image: "book.svg",
-        alt: "Livre d'écriture",
-        link: "ghost-book",
       },
       {
         image: "eye.svg",
@@ -46,6 +42,13 @@ export default {
         link: "deads",
       },
     ];
+    if (canWrite) {
+      items.splice(1, 0, {
+        image: "book.svg",
+        alt: "Livre d'écriture",
+        link: "ghost-book",
+      });
+    }
     return { publicPath, items };
   },
 };
