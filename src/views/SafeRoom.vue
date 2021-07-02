@@ -1,5 +1,7 @@
 <template>
-  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">Retour</button>
+  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">
+    Retour
+  </button>
   <div class="container">
     <h1 class="text-center mb-5">Santé mentale de l'équipe</h1>
     <div class="row">
@@ -45,29 +47,32 @@ import SocketConfig from "../socket.config";
 
 export default {
   name: "SafeRoom",
-  emits: ['setPage'],
+  emits: ["setPage"],
   setup() {
     const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
     const state = reactive({
-      players: JSON.parse(localStorage.getItem('PLAYERS')).filter(p => !p.isDead),
+      players: JSON.parse(localStorage.getItem("PLAYERS")).filter(
+        (p) => !p.isDead
+      ),
       healthAvg: computed(() => {
         let average = 0;
         for (const player of state.players) {
           average += player.mentalScore;
         }
         average /= 1.0 * state.players.length;
-        return average;
+        return Math.round(average);
       }),
     });
-    socket.on('PLAYERS_CREATED', players => {
-      state.players = players.filter(p => !p.isDead)
-    })
-    socket.on('PLAYERS_MENTAL_UPD', players => {
-      state.players = players.filter(p => !p.isDead)
-    })
+    socket.on("PLAYERS_CREATED", (players) => {
+      state.players = players.filter((p) => !p.isDead);
+    });
+    socket.on("PLAYERS_MENTAL_UPD", (players) => {
+      state.players = players.filter((p) => !p.isDead);
+      localStorage.setItem("PLAYERS", JSON.stringify(players));
+    });
     const takePill = (player) => {
-      socket.emit('TAKE_MEDICINE', player.name)
+      socket.emit("TAKE_MEDICINE", player.name);
     };
     return { publicPath, state, takePill };
   },

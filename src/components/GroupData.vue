@@ -58,7 +58,8 @@ export default {
         average += player.mentalScore;
       }
       average /= 1.0 * players.length;
-      state.psychology = average;
+      state.psychology = Math.round(average);
+      localStorage.setItem("PLAYERS", JSON.stringify(players));
     });
 
     socket.on("PLAYERS_MOVE", (room) => {
