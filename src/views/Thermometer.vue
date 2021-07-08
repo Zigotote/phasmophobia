@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">
+  <button class="btn btn-outline-dark" @click="() => {$emit('setPage', ''); window.location.reload();}">
     Retour
   </button>
   <h1 class="text-center">{{ state.temperature }}°C</h1>

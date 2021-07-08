@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">Retour</button>
+  <button class="btn btn-outline-dark" @click="() => {$emit('setPage', ''); window.location.reload();}">Retour</button>
   <div class="container">
     <h1 class="text-center mb-5">Dans quelle pièce allez-vous entrer ?</h1>
     <rooms-list :disabledRoom="state.currentRoom" @sendRoom="sendRoom" />

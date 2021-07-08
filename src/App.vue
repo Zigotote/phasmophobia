@@ -86,10 +86,6 @@ export default {
       localStorage.setItem("PLAYERS", JSON.stringify(players));
     });
 
-    socket.on("PLAYERS_CREATED", (players) => {
-      localStorage.setItem("PLAYERS", JSON.stringify(players));
-    });
-
     socket.on("PLAYERS_MOVE", (room) => {
       localStorage.setItem("CURRENT_ROOM", room);
     });
