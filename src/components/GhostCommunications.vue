@@ -36,11 +36,6 @@ export default {
         alt: "Interactions",
         link: "ghost-interaction",
       },
-      {
-        image: "skull.svg",
-        alt: "Morts",
-        link: "deads",
-      },
     ];
     if (canWrite) {
       items.splice(1, 0, {
