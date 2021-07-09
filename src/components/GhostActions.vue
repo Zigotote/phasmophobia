@@ -1,14 +1,12 @@
 <template>
-  <div class="row m-1">
-    <img
-      class="col-2 rounded-pill"
-      :class="!state.power ? 'border border-danger border-3' : ''"
-      alt="Lumière éteinte"
-      :src="`${publicPath}assets/power_off.svg`"
-    />
-    <div class="form-check form-switch col-3">
+  <div class="row m-1 justify-content-center">
+    <div class="col-2">
+      <img alt="Lumière éteinte" :src="`${publicPath}assets/power_off.svg`"/>
+      <div>off</div>
+    </div>
+    <div class="form-check form-switch col-4">
       <input
-        class="form-check-input mx-auto mt-4"
+        class="form-check-input mx-auto mt-2"
         type="checkbox"
         id="switch"
         v-model="state.power"
@@ -16,33 +14,12 @@
         @change="togglePower"
       />
     </div>
-    <img
-      class="col-2 rounded-pill"
-      :class="state.power ? 'border border-danger border-3' : ''"
-      :src="`${publicPath}assets/power_on.svg`"
-      alt="Lumière allumée"
-    />
+    <div class="col-2">
+      <img :src="`${publicPath}assets/power_on.svg`" alt="Lumière allumée"/>
+      <div>on</div>
+    </div>
   </div>
   <div class="row m-1">
-    <div class="row mt-3 mb-0">
-      <h5 class="text-center mb-5">Variation de l'EMF</h5>
-    </div>
-    <div class="row">
-      <div class="form-check col" v-for="(emf, index) in emfs" :key="index">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="emf"
-          :checked="index == 1"
-          :disabled="!state.huntingAvailable"
-          :id="emf"
-          @click="() => changeEmf(index)"
-        />
-        <label class="form-check-label" :for="emf">
-          {{ emf }}
-        </label>
-      </div>
-    </div>
     <button
       type="button"
       class="btn btn-danger col m-1"
