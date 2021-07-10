@@ -3,8 +3,8 @@
     Retour
   </button>
   <div class="container">
-    <h1 class="text-center mb-5">Décès soudain</h1>
-    <h5 class="text-center mb-5">Qui est mort ?</h5>
+    <h1 class="text-center mb-5">Victimes de la chasse</h1>
+    <h5 class="text-center mb-5">Qui est mort durant la chasse ?</h5>
     <players-list
       socket-event="PLAYER_DEATH"
       @setPage="$emit('setPage', 'ghost-home')"
