@@ -38,7 +38,8 @@ import SocketConfig from "../socket.config";
 
 export default {
   name: "GhostActions",
-  setup() {
+  emits: ['setPage'],
+  setup(_, context) {
     const socket = SocketConfig.SOCKET;
     const publicPath = process.env.BASE_URL;
     const state = reactive({
@@ -54,8 +55,7 @@ export default {
       socket.emit("EMF_FREQUENCY_UPD", value);
     };
     const startHunt = () => {
-      // eslint-disable-next-line no-debugger
-      debugger;
+      context.emit("setPage", "deads");
       const soundElement = document.getElementById("hunting-sound");
       soundElement.play();
       socket.emit("HUNTING_STARTED");

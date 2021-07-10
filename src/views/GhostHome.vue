@@ -6,7 +6,7 @@
       <group-data/>
     </div>
     <div class="border border-dark border-2 rounded mt-4">
-        <ghost-actions />
+        <ghost-actions  @setPage="p => $emit('setPage', p)"/>
     </div>
     <div class="d-flex border border-dark border-2 rounded mt-4">
       <ghost-communications @setPage="p => $emit('setPage', p)"/>
