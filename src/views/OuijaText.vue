@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-outline-dark" @click="() => {$emit('setPage', ''); window.location.reload();}">
+  <button class="btn btn-outline-dark" @click="$emit('setPage', '')">
     Retour
   </button>
   <h1 class="text-center">{{ text }}</h1>
