@@ -54,6 +54,10 @@ export default {
       socket.emit("EMF_FREQUENCY_UPD", value);
     };
     const startHunt = () => {
+      // eslint-disable-next-line no-debugger
+      debugger;
+      const soundElement = document.getElementById("hunting-sound");
+      soundElement.play();
       socket.emit("HUNTING_STARTED");
       state.huntingAvailable = false;
       setTimeout(() => {

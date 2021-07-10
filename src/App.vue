@@ -1,4 +1,9 @@
 <template>
+  <!--Sounds-->
+  <audio id="hunting-sound">
+    <source :src="`${publicPath}assets/sounds/hunting_sound.mp3`" type="audio/mpeg">
+  </audio>
+
   <!--Setup pages-->
   <home
     v-if="state.page === undefined || state.page === null || state.page === ''"
@@ -79,7 +84,7 @@ export default {
   },
   setup() {
     let state = reactive({ page: localStorage.getItem("PAGE") });
-
+    const publicPath = process.env.BASE_URL;
     const socket = SocketConfig.SOCKET;
 
     socket.on("PLAYERS_CREATED", (players) => {
@@ -95,7 +100,7 @@ export default {
       state.page = page;
     };
 
-    return { state, setPage };
+    return { state, setPage, publicPath };
   },
 };
 </script>
