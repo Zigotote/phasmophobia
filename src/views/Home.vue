@@ -7,7 +7,7 @@
           type="button"
           @click="$emit('setPage', link.to)"
           class="btn btn-danger m-4"
-          v-if="link.to == 'choose-ghost' || partyStart"
+          v-if="link.to !== 'ghost-home' || partyStart"
         >
           {{ link.name }}
         </button>
